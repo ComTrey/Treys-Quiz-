@@ -11,4 +11,27 @@
       <header>
         <h1>JavaScript Fundamentals Quiz</h1>
       </header>
-      <main>
+    <main>
+      <section class="container">
+        <div id="startScreen">
+          <p>Click the button below to start the quiz.</p>
+          <button id="startBtn">Start Quiz</button>
+        </div>
+        <div id="quiz" class="hidden">
+          <div id="timer">Time: <span id="timeLeft">0</span></div>
+          <article id="question"></article>
+          <nav id="options"></nav>
+        </div>
+            <div id="gameOver" class="hidden">
+              <h2>Game Over</h2>
+              <form>
+                <label for="initials">Enter your initials:</label>
+                <input type="text" id="initials" maxlength="3">
+                <button id="saveScore" type="button">Save Score</button>
+              </form>
+            </div>
+            </section>
+            </main>
+            <script src="assets/js/script.js"></script>
+            </body>
+        </html>
