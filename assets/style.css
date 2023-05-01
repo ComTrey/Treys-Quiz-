@@ -28,3 +28,36 @@ button {
   border: none;
   outline: none;
 }
+button:hover {
+  background-color: #45a049;
+}
+
+#options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+.option {
+  padding: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #f1f1f1;
+  text-align: left;
+}
+
+.option:hover {
+  background-color: #ddd;
+}
+
+#timer {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+input {
+  padding: 5px;
+}
