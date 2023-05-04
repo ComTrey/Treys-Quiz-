@@ -40,6 +40,26 @@ const questions = [
     correctIndex: 0
   }
 ];
+let currentIndex = 0;
+let time = 60;
+let timerInterval;
+
+startBtn.addEventListener('click', startQuiz);
+
+function startQuiz() {
+  startScreen.classList.add('hidden');
+  quiz.classList.remove('hidden');
+  timerInterval = setInterval(updateTimer, 1000);
+  displayQuestion();
+}
+
+function updateTimer() {
+  time--;
+  timeLeft.textContent = time;
+  if (time <= 0) {
+    endGame();
+  }
+}
 
 
 
