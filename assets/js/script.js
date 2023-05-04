@@ -8,6 +8,7 @@ const gameOver = document.getElementById('gameOver');
 const initialsInput = document.getElementById('initials');
 const saveScoreBtn = document.getElementById('saveScore');
 const startScreen = document.getElementById('startScreen');
+
 const questions = [
   {
     question: "Which of the following is NOT a JavaScript data type?",
@@ -40,6 +41,46 @@ const questions = [
     correctIndex: 0
   }
 ];
+let currentIndex = 0;
+let time = 60;
+let timerInterval;
+
+startBtn.addEventListener('click', startQuiz);
+
+function startQuiz() {
+  startScreen.classList.add('hidden');
+  quiz.classList.remove('hidden');
+  timerInterval = setInterval(updateTimer, 1000);
+  displayQuestion();
+}
+
+function updateTimer() {
+  time--;
+  timeLeft.textContent = time;
+  if (time <= 0) {
+    endGame();
+  }
+}
+function displayQuestion() {
+  if (currentIndex >= questions.length) {
+    endGame();
+    return;
+  }
+
+  const currentQuestion = questions[currentIndex];
+  question.textContent = currentQuestion.question;
+  question.classList.add('question-text'); // Added line
+  options.innerHTML = '';
+
+  currentQuestion.options.forEach((option, index) => {
+    const button = document.createElement('button');
+    button.textContent = option;
+    button.classList.add('option');
+    button.addEventListener('click', () => selectOption(index));
+    options.appendChild(button);
+  });
+}
+
 
 
 
