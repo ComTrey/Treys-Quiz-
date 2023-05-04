@@ -60,7 +60,24 @@ function updateTimer() {
     endGame();
   }
 }
+function displayQuestion() {
+  if (currentIndex >= questions.length) {
+    endGame();
+    return;
+  }
 
+  const currentQuestion = questions[currentIndex];
+  question.textContent = currentQuestion.question;
+  question.classList.add('question-text'); 
+  options.innerHTML = '';
+  currentQuestion.options.forEach((option, index) => {
+    const button = document.createElement('button');
+    button.textContent = option;
+    button.classList.add('option');
+    button.addEventListener('click', () => selectOption(index));
+    options.appendChild(button);
+  });
+}
 
 
 
