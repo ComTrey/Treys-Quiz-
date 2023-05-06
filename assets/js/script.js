@@ -78,6 +78,36 @@ function displayQuestion() {
     options.appendChild(button);
   });
 }
+function selectOption(selectedIndex) {
+  if (questions[currentIndex].correctIndex !== selectedIndex) {
+    time -= 10;
+  }
+
+  currentIndex++;
+  displayQuestion();
+}
+
+function endGame() {
+  clearInterval(timerInterval);
+  quiz.classList.add('hidden');
+  gameOver.classList.remove('hidden');
+}
+
+saveScoreBtn.addEventListener('click', saveScore);
+
+function saveScore() {
+  const initials = initialsInput.value.toUpperCase();
+  if (!initials) return;
+
+  let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+  const newScore = { initials, score: time };
+
+  highScores.push(newScore);
+  highScores.sort((a, b) => b.score - a.score);
+  highScores = highScores.slice(0, 5);
+
+  localStorage.setItem('highScores', JSON.stringify(highScores));
+}
 
 
 
